@@ -24,11 +24,6 @@
         "name": "logs",
         "path": "/logs",
         "desc": "更新日志"
-      },
-      {
-        "name": "test",
-        "path": "/test",
-        "desc": "测试"
       }
     ],
     "组件": [

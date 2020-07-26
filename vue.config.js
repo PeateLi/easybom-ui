@@ -2,20 +2,19 @@ module.exports = {
     lintOnSave: false,
 	publicPath: './',     //解决打包上线时，文件路径变为绝对路径，显示空白
 	configureWebpack: {       //对webpack配置
-		devServer: {
-			proxy: {        //跨域代理
-				'/api': {
-					target: 'http://ko.196.152.com',        //baseURL
-					changeOrigin: true,               //是否开启跨域
-					pathRewrite: {
-						'^/api': ''          //让路径以/api开头的字段为空
-					}
-				}
-			}
-        },
         module: {
             rules: [
-              { test: /\.txt$/, use: 'vue-markdown-loader' }
+              {
+                test: /\.md$/,
+                use: [
+                  {
+                    loader: 'vue-loader',
+                  },
+                  {
+                    loader: require.resolve('./markdown-loader'),
+                  },
+                ],
+              },
             ]
         },
     },
@@ -27,7 +26,7 @@ module.exports = {
         }
     },
      // 扩展 webpack 配置，使 packages 加入编译
-     chainWebpack: config => {
+    chainWebpack: config => {
         config.module
           .rule('js')
           .include
@@ -36,7 +35,7 @@ module.exports = {
           .use('babel')
             .loader('babel-loader')
             .tap(options => {
-              // 修改它的选项...
+              // 修改它的选项
               return options
             })
     }

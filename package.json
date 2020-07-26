@@ -2,13 +2,13 @@
   "name": "easybom-ui",
   "description": "This is a UI components for Vue 2.x ",
   "main": "packages/index.js",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name npackages --dest lib packages/index.js"
+    "lib": "vue-cli-service build --target lib --name easybom-ui --dest lib packages/index.js"
   },
   "dependencies": {
     "node-sass": "^4.14.1",
